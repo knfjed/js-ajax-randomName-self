@@ -2,7 +2,7 @@
 const url = "https://uinames.com/api/?ext";
 
 // ファンクション呼び出されたら以下を実行
-function getPersonalData(name, surname, gender) {
+function getPersonalData() {
   return new Promise((resolve, reject) => {
     // リクエストの送信
     fetch(url).then(res => {
@@ -17,15 +17,8 @@ function getPersonalData(name, surname, gender) {
   });
 }
 
-// ウインドウが読み込まれたら、以下を実行
-window.addEventListener("load", () => {
-  getPersonalData().then(data => {
-    console.log(data);
-  });
-});
-
 // データテーブルを作るファンクション
-function createPersonalDataList(nameList) {
+function createPersonalDataList(dataList) {
   // #rootを取得
   // ol要素を作成
   // li要素を作成、データを代入、ol要素に追加
@@ -34,8 +27,20 @@ function createPersonalDataList(nameList) {
   root.appendChild(ol);
   const li = document.createElement("li");
 
-  li.textContent = "hello";
+  li.textContent = dataList;
   ol.appendChild(li);
 }
+
+// ウインドウが読み込まれたら、以下を実行
+window.addEventListener("load", () => {
+  getPersonalData().then(data => {
+    console.log(data);
+    const dataList = data.map(
+      ({ name, surname, gender, region, age }) =>
+        `${name}, ${surname}, ${gender}, ${region}, ${age}`
+    );
+    createPersonalDataList(dataList);
+  });
+});
 
 getPersonalData();
