@@ -35,9 +35,8 @@ function createPersonalDataList(dataList) {
 window.addEventListener("load", () => {
   getPersonalData().then(data => {
     console.log(data);
-    const dataList = data.map(
-      ({ name, surname, gender, region, age }) =>
-        `${name}, ${surname}, ${gender}, ${region}, ${age}`
+    let dataList = new Array(
+      `name: ${data.name}  /  surname: ${data.surname} /   gender: ${data.gender} /  region: ${data.region} /  email: ${data.email} /  phone: ${data.phone}`
     );
     createPersonalDataList(dataList);
   });
