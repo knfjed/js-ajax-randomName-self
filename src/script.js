@@ -62,6 +62,8 @@ function createPersonalDataTable(dataList) {
   tableEl.classList.add("nameTable");
   // trタグを作成する（tableヘッダー用）
   const trEl = document.createElement("tr");
+  // 行を追加
+  let row = tableEl.insertRow(-1);
 
   // dataListの１行目（index0 -> dataList[0]）のデータ数分ループをする
   // for (key of Object.keys(dataList)) {
@@ -79,16 +81,25 @@ function createPersonalDataTable(dataList) {
   // dataListのプロパティ名の数分ループをする
   for (let i = 0; i < dataList.length; i++) {
     // trタグを作成
-    const trEl = document.createElement("tr");
-    tableEl.appendChild(trEl);
-    // tdダグをデータ数分作成する
-    const tdEl = document.createElement("td");
-    // tdタグにを代入
-    tdEl.textContent = Object.keys(dataList[i]);
-    // tdをtrにappend
-    trEl.appendChild(tdEl);
-  }
+    const trEl = tableEl.insertRow(-1);
 
+    // imgタグを作成
+    const imgEl = document.createElement("img");
+
+    for (let i = 0; i < 7; i++) {
+      // tdダグをデータ数分作成する
+      const tdEl = trEl.insertCell(-1);
+      // tdタグにdataListの値を代入
+      tdEl.textContent = "hello";
+      // tdをtrにappend
+      trEl.appendChild(tdEl);
+
+      // // imgElにdataListの７番目を代入
+      // const imgEl = dataList[6];
+      // // imgElをtdの７番目にappend
+      // tableEl.rows[1].cells[6].appendChild(imgEl);
+    }
+  }
   return tableEl;
 }
 

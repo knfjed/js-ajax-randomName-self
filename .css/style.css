@@ -4,4 +4,12 @@
 
 .nameTable th {
   border: solid 1px black;
+  width: 100px;
+}
+
+.nameTable td {
+  border: solid 1px black;
+  background-color: pink;
+  height: 100px;
+  text-align: center;
 }
