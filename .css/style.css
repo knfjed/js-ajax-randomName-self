@@ -1,0 +1,7 @@
+.nameTable {
+  border: solid 1px red;
+}
+
+.nameTable th {
+  border: solid 1px black;
+}
